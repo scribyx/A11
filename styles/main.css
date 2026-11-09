@@ -1,0 +1,298 @@
+/* custom property */
+:root {
+    --accent-color: #800000;  /* could also be coded #800 */
+    --gradient-color: #f6bb73;
+
+    --light_menu: white;
+    --mid_menu: antiquewhite;
+    --dark_menu: black;
+}
+
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* default style */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: calc(15px + .2vw);
+    width: min(80%, 1024px);
+    line-height: 1.5;
+    margin: auto;
+    border: 2px solid var(--accent-color);
+}
+h1, h2, h3, p, ul {
+    padding: .25em 0;
+}
+a:hover, a:focus{
+    font-style: italic;
+    color: var(--accent-color);
+}
+h1 {
+    font-size: 150%;
+}
+h2 {
+    font-size: 130%;
+    color: var(--accent-color);
+}
+h3 {
+    font-size: 105%;
+}
+ul {
+    margin-left: 2em;
+}
+
+/* the styles for the header */
+header {
+    line-height: 1.2;
+    border-bottom: 2px solid var(--accent-color);
+    background-image: linear-gradient(
+        30deg, var(--gradient-color) 0%, white 30%, white 65%, var(--gradient-color) 100%);
+    text-align: center;
+    & h2 {
+        font-size: 175%;
+        padding: .5em 0 0 0;
+    }
+    & h3 {
+        font-size: 130%;
+        font-style: italic;
+        padding-bottom: 1em;
+    }
+    & img {
+        display: none;
+    }
+}
+
+/* the styles for the main content (Mobile-First) */
+main {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 0 1em 1em;
+    & blockquote {
+        font-style: italic;
+        padding-left: 1em;
+    }
+    & h3 + img { /* speaker images */
+        width: clamp(40px, 50%, 75px);
+        border: 4px double var(--accent-color);
+        border-radius: 10px;
+    }
+}
+
+/* the styles for the section */
+section {
+    padding-left: .5em;
+    border-bottom: 2px solid var(--accent-color);
+    & img {
+        width: clamp(100px, 50%, 250px);
+        float: right;
+        margin: 0 1em .25em;
+    }
+}
+
+/* the styles for the aside */
+aside {
+    padding-right: .5em;
+}
+
+/* the styles for the footer */
+footer {
+    background-color: var(--accent-color);
+    & p {
+        text-align: center;
+        color: white;
+        padding: 1em 0;
+    }
+}
+
+/* CSS class */
+.featured {
+    border-top: 2px solid var(--accent-color);
+    border-bottom: 2px solid var(--accent-color);
+    padding: .5em 0 1em;
+}
+.speaker {
+    & h1 {
+        color: var(--accent-color);
+    }
+    & h2 {
+        color: black;
+    }
+    & p {
+        padding: .5em 0; 
+    }   
+}
+.large {
+    font-size: 125%;
+}
+
+/* styles for the menu */
+.navbar {
+    clear: left;
+    position: relative;
+    background-color: var(--accent-color);
+    & a {
+        display: block;
+        padding: 1em;
+        text-decoration: none;
+        margin: 0 2px 2px 0;
+    }
+    & a:link, a:visited { 
+        color: var(--light_menu);
+    }
+    & a:hover, a:focus, a.current {
+        background-color: var(--mid_menu);
+        color: var(--dark_menu);
+    }
+    & ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+.menu {
+    position: absolute;
+    left: 0;
+    background-color: var(--accent-color);
+    width: 40%;
+    display: none;
+    z-index: 10;
+}
+
+/* Hide checkbox and style button */
+#menu-toggle {
+    display: none;
+}
+
+.menu-btn {
+    display: block;
+    background-color: var(--accent-color);
+    color: var(--light_menu);
+    padding: 1em;
+    font-size: 120%;
+    cursor: pointer;
+}
+
+.menu-btn:hover {
+    background-color: var(--mid_menu);
+    color: var(--dark_menu);
+}
+
+/* When checkbox is checked */
+#menu-toggle:checked ~ .menu {
+    display: block;
+}
+
+#menu-toggle:checked + .menu-btn::before {
+    content: "\00d7"; 
+}
+
+.menu-btn::before {
+    content: "\2630"; 
+}
+
+.submenu {
+    position: relative;
+    & small { margin-left: .25em; }
+}
+
+.dropdown {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    background-color: var(--accent-color);
+    color: var(--light_menu);
+    display: none;
+    & > li a { 
+        margin: 2px; 
+    }
+}
+
+.submenu:hover > .dropdown {
+    display: block;
+}
+
+.submenu > a::after {
+    content: "\25b8"; 
+    float: right;
+}
+
+
+
+@media screen and (min-width: 768px) {
+
+    /* Header adjustment */
+    header {
+        text-align: left;
+        & img {
+            display: block;
+            width: clamp(40px, 15%, 80px);
+            float: left;
+            margin: .75em 1em;
+        }
+    }
+
+    /* Main layout adjustments */
+    main {
+        flex-direction: row;
+    }
+    section {
+        flex-basis: 75%;
+        border-bottom: none;
+    }
+    aside {
+        flex-basis: 25%;
+    }
+
+    /* Navbar + Horizontal Menu adjustment */
+    .navbar {
+        & a {
+            margin: 0 1px 2px;
+        }
+    }
+    .menu-btn {
+        display: none;
+    }
+    .menu {
+        display: flex;
+        flex-wrap: wrap;
+        position: relative;
+        width: 100%;
+        left: auto;
+    }
+    .menu > li {
+        flex-basis: 20%;
+        text-align: center;
+    }
+    .menu > li:first-child a { 
+        margin-left: 0; 
+    }
+    .menu > li:last-child a { 
+        margin-right: 0; 
+    }
+
+    /* Submenu adjustment */
+    .submenu {
+        position: relative;
+    }
+    .dropdown {
+        position: absolute;
+        top: auto;
+        left: 0;
+        right: 0;
+        width: auto;
+        & > li a { 
+            margin: 0 2px 2px; 
+        }
+    }
+    .submenu > a::after {
+        content: "\25be"; 
+        float: none;
+        margin-left: .25em;
+    }
+}
