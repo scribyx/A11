@@ -66,7 +66,7 @@ header {
     }
 }
 
-/* the styles for the main content (Mobile-First) */
+/* the styles for main content */
 main {
     display: flex;
     flex-direction: column-reverse;
@@ -75,14 +75,14 @@ main {
         font-style: italic;
         padding-left: 1em;
     }
-    & h3 + img { /* speaker images */
+    & h3 + img { /* speaker image */
         width: clamp(40px, 50%, 75px);
         border: 4px double var(--accent-color);
         border-radius: 10px;
     }
 }
 
-/* the styles for the section */
+/* the styles for section */
 section {
     padding-left: .5em;
     border-bottom: 2px solid var(--accent-color);
@@ -93,12 +93,12 @@ section {
     }
 }
 
-/* the styles for the aside */
+/* the styles for aside */
 aside {
     padding-right: .5em;
 }
 
-/* the styles for the footer */
+/* the styles for footer */
 footer {
     background-color: var(--accent-color);
     & p {
@@ -129,7 +129,7 @@ footer {
     font-size: 125%;
 }
 
-/* styles for the menu */
+/* styles for menu */
 .navbar {
     clear: left;
     position: relative;
@@ -163,7 +163,7 @@ footer {
     z-index: 10;
 }
 
-/* Hide checkbox and style button */
+/* Hide checkbox + style button */
 #menu-toggle {
     display: none;
 }
@@ -237,7 +237,7 @@ footer {
         }
     }
 
-    /* Main layout adjustments */
+    /* Main layout adjustment */
     main {
         flex-direction: row;
     }
